@@ -10,7 +10,7 @@ const app = Express();
 app.use(function (request: Request, response: Response, next: NextFunction) {
   response.header(
     "Access-Control-Allow-Origin",
-    "https://biller-pdf-api-project.vercel.app"
+    "https://biller-pdf-api-project.vercel.app/"
   );
   response.header(
     "Access-Control-Allow-Headers",
