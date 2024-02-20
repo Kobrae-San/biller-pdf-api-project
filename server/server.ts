@@ -8,7 +8,10 @@ const PORT = 8888;
 const app = Express();
 
 app.use(function (request: Request, response: Response, next: NextFunction) {
-  response.header("Access-Control-Allow-Origin", process.env.PUBLIC_URL_API);
+  response.header(
+    "Access-Control-Allow-Origin",
+    "https://biller-pdf-api-project.vercel.app"
+  );
   response.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
