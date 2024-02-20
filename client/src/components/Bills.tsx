@@ -21,7 +21,7 @@ export default function Bills() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${import.meta.env.PUBLIC_URL_API}/bills`)
+    fetch(`${import.meta.env.VITE_PUBLIC_URL_API}/bills`)
       .then((response) => response.json())
       .then((data: Bill[]) => setData(data))
       .catch((error) => console.error("Error:", error));

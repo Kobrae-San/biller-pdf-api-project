@@ -38,7 +38,7 @@ export default function Form() {
     }
     if (correctInput === inputCount) {
       const data = JSON.stringify(formData);
-      fetch(`${import.meta.env.PUBLIC_URL_API}/bill`, {
+      fetch(`${import.meta.env.VITE_PUBLIC_URL_API}/bill`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=UTF-8",
