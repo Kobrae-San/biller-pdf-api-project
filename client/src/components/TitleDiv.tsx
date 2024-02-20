@@ -17,7 +17,7 @@ export default function TitleDiv({ title, subtitle }: TitleDivProps) {
         <ul>
           <li>
             <span>
-              <Link to={"http://localhost:5574/"} className="contrast">
+              <Link to={"/"} className="contrast">
                 Formulaire
               </Link>
             </span>
@@ -25,7 +25,7 @@ export default function TitleDiv({ title, subtitle }: TitleDivProps) {
 
           <li>
             <span>
-              <Link to={"http://localhost:5574/bills"} className="contrast">
+              <Link to={"/bills"} className="contrast">
                 Factures
               </Link>
             </span>
