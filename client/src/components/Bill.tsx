@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "./Button";
-import "dotenv/config";
 
 interface Bill {
   id: number;
@@ -25,7 +24,7 @@ export default function Bill() {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`${process.env.PUBLIC_URL_API}/bills/bill?id=${id}`)
+    fetch(`${import.meta.env.PUBLIC_URL_API}/bills/bill?id=${id}`)
       .then((response) => response.json())
       .then((data: Bill[]) => setData(data))
       .catch((error) =>
@@ -39,7 +38,7 @@ export default function Bill() {
 
   async function deleteBill(id: number) {
     const response = await fetch(
-      `${process.env.PUBLIC_URL_API}/bills/bill?id=${id}`,
+      `${import.meta.env.PUBLIC_URL_API}/bills/bill?id=${id}`,
       {
         method: "DELETE",
       }
@@ -54,7 +53,7 @@ export default function Bill() {
   async function showBill(id: number) {
     try {
       const response = await fetch(
-        `${process.env.PUBLIC_URL_API}/bills/bill/pdf?id=${id}`
+        `${import.meta.env.PUBLIC_URL_API}/bills/bill/pdf?id=${id}`
       );
       const pdf = await response.blob();
       const url = URL.createObjectURL(pdf);

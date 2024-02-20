@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "dotenv/config";
 
 import Input from "./Input";
 import Button from "./Button";
@@ -39,7 +38,7 @@ export default function Form() {
     }
     if (correctInput === inputCount) {
       const data = JSON.stringify(formData);
-      fetch(`${process.env.PUBLIC_URL_API}/bill`, {
+      fetch(`${import.meta.env.PUBLIC_URL_API}/bill`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=UTF-8",
