@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  biller-pdf-backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/home/app
+    ports:
+      - "8888:8888"
+
+  biller-frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - ./client:/home/app
+    ports:
+      - "5574:5574"
+volumes:
+  server:
+  client:
