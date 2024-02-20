@@ -24,7 +24,11 @@ export default function Bills() {
     fetch(`${import.meta.env.VITE_PUBLIC_URL_API}/bills`)
       .then((response) => response.json())
       .then((data: Bill[]) => setData(data))
-      .catch((error) => console.error("Error:", error));
+      .catch((error) =>
+        console.error(
+          `Echec de la récupération des données des factures: ${error}`
+        )
+      );
   }, []);
 
   function goToBill(id: number) {

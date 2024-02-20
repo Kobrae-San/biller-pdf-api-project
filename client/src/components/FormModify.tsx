@@ -43,7 +43,11 @@ export default function Form() {
       .then((data: Bill[]) => {
         setFormData(data[0]);
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) =>
+        console.error(
+          `Echec de la récupération des données de la facture: ${error}`
+        )
+      );
   }, []);
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
