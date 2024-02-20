@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "dotenv/config";
 
 interface Bill {
   id: number;
@@ -21,7 +22,7 @@ export default function Bills() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8888/bills")
+    fetch(`${process.env.PUBLIC_URL_API}/bills`)
       .then((response) => response.json())
       .then((data: Bill[]) => setData(data))
       .catch((error) => console.error("Error:", error));

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import "dotenv/config";
 
 import Input from "./Input";
 import Button from "./Button";
@@ -38,7 +39,7 @@ export default function Form() {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:8888/bills/bill?id=${id}`)
+    fetch(`${process.env.PUBLIC_URL_API}/bills/bill?id=${id}`)
       .then((response) => response.json())
       .then((data: Bill[]) => {
         setFormData(data[0]);
@@ -62,7 +63,7 @@ export default function Form() {
     }
     if (correctInput === inputCount) {
       const data = JSON.stringify(formData);
-      fetch(`http://localhost:8888/bills/modify?id=${id}`, {
+      fetch(`${process.env.PUBLIC_URL_API}/bills/modify?id=${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json; charset=UTF-8",
