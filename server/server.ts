@@ -141,7 +141,17 @@ app.get("/bills/bill/pdf", async (request: Request, response: Response) => {
         290
       );
 
-    doc.fontSize(12).text(`Tva (${result.tva}) %`, 420, 320);
+    doc
+      .fontSize(12)
+      .text(
+        `Tva (${result.tva}) % ${(
+          result.quantity *
+          result.price *
+          (result.tva / 100)
+        ).toFixed(2)} €`,
+        370,
+        320
+      );
     doc
       .fontSize(12)
       .text(

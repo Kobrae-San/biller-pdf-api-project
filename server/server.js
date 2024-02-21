@@ -19,7 +19,7 @@ const pdfkit_1 = __importDefault(require("pdfkit"));
 const PORT = 8888;
 const app = (0, express_1.default)();
 app.use(function (request, response, next) {
-    response.header("Access-Control-Allow-Origin", process.env.PUBLIC_URL_API);
+    response.header("Access-Control-Allow-Origin", "http://localhost:5574");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
@@ -64,11 +64,9 @@ app.post("/bill", (request, response) => __awaiter(void 0, void 0, void 0, funct
 }));
 app.get("/bills", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(process.env.PUBLIC_URL_API);
         const billsRequest = yield pool.query("SELECT id, doctype, firstname, lastname, address, country, city, zipcode, productname, price, quantity, tva, created_at FROM bill");
         const result = billsRequest.rows;
         response.json(result);
-        console.log(result);
     }
     catch (error) {
         console.error(`La récupération des factures a échoué ${error}.`);
@@ -114,7 +112,11 @@ app.get("/bills/bill/pdf", (request, response) => __awaiter(void 0, void 0, void
         doc
             .fontSize(12)
             .text(`Sous-total ${(result.price * result.quantity).toFixed(2)}`, 385, 290);
-        doc.fontSize(12).text(`Tva (${result.tva}) %`, 420, 320);
+        doc
+            .fontSize(12)
+            .text(`Tva (${result.tva}) % ${(result.quantity *
+            result.price *
+            (result.tva / 100)).toFixed(2)} €`, 370, 320);
         doc
             .fontSize(12)
             .text(`Montant Total ${(result.price *
