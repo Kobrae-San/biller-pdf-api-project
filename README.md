@@ -19,6 +19,9 @@ TP dont le but est de générer un pdf via une API REST faite avec Express.
 3. - Version Docker: docker-compose up -d
    - Version classique: - cd server suivi de npm install et enfin npm run dev - cd client suivi de npm install et enfin npm run dev
 
+4. - Une Commande de création de table est disponible pour la db en local dans le fichier ./server/db/db.sql
+5. - Un fichier exemple de .env est disponible dans les 2 dossier.
+
 ## Utilisation
 
 - Le Projet est déployé sur vercel à cette adresse : https://biller-pdf-api-project-front.vercel.app/
